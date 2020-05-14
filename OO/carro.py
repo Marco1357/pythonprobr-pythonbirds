@@ -1,5 +1,5 @@
 """
-Você deve criar uma classe carro que vai possuir dois atributos compostos por duas clsses:
+Você deve criar uma classe carro que vai possuir dois atributos compostos por duas classes:
 
 1) Motor
 2) Direção
@@ -13,15 +13,16 @@ Ele oferece os seguintes atributos:
 A Direção terá a responsabilidade de contralar a direção. Ela ofereçe os seguintes
 atributos:
 1) valor da direção com valores possíveis: Norte ,sul, Leste, Oeste
-2) Método girar a direita
+2) Método girar_a_direita
+2) Método girar_a_esquerda
 
   N
 O   L
   S
 
-    Ex:
+    Exemplo:
     # Testando o motor
-    >>> motor = motor()
+    >>> motor = Motor()
     >>> motor.velocidade
     0
     >>> motor.acelerar()
@@ -39,12 +40,76 @@ O   L
     >>> motor.frear()
     >>> motor.velocidade
     0
-    >>> motor.frear()
-    >>> motor.velocidade
-
-
-
-
-
-
+    # Testando Direcao
+    >>> direcao = Direcao()
+    >>> direcao.valar
+    'Norte'
+    >>> direcao.girar_a_direita
+    >>> direcao.valor
+    'Leste'
+    >>> direcao.girar_a _direita
+    >>> direcao.valor
+    'Sul'
+    >>> direcao.girar_a_direita
+    >>> direcao.valor
+    'Oeste'
+    >>> direcao.girar_a_direita
+    >>> direcao.valor
+    'Norte'
+    >>> direcao.girar_a _esquerda
+    >>> direcao.valor
+    'Oeste'
+    >>> direcao.girar_a_esquerda
+    >>> direcao.valor
+    'Sul'
+    >>> direcao.girar_a_esquerda
+    >>> direcao.valor
+    'Leste'
+    >>> direcao.girar_a_esquerda
+    >>> direcao.valor
+    'Norte'
+    >>> carro = Carro(direcao, motor)
+    >>> carro.calcular_velocidade
+    0
+    >>> carro.acelerar()
+    >>> carro.calcular_velocidade()
+    1
+    >>> carro.acelerar()
+    >>> carro.calcular_velocidade
+    2
+    >>> carro.frear()
+    >>> carro.calcular_velocidade()
+    0
+    >>> carro.calcular_direcao()
+    >>> 'Norte'
+    >>> carro.gira_a_direcao()
+    >>> carro.calcula_direcao()
+    >>> 'Leste'
+    >>> carro.gira_a_esquerda()
+    >>> carro.calcula_direcao()
+    >>> 'Norte'
+    >>> carro.gira_a_esquerda()
+    >>> carro.calcula_direcao()
+    >>> 'Oeste'
 """
+NORTE = 'Norte'
+SUL = 'Sul'
+LESTE = 'Leste'
+OESTE = 'Oeste'
+
+class Motor:
+    def __init__(self):
+        self.velocidade = 0
+
+    def acelerar(self):
+        self.velocidade += 1
+
+    def frear(self):
+        self.velocidade -= 2
+        self.velocidade = max(0, self.velocidade)
+
+
+
+class Direcao:
+    def __init__(self):
+        self.valor = NORTE
